@@ -12,6 +12,9 @@ html {
 body {
     width: 60vw;
     --main-background-color: #e4e4e4;
+    --button-background-color: #1a1a1a;
+    --text-color: black;
+    --button-text-color: white;
     
     background-color: var(--main-background-color);
 
@@ -19,6 +22,9 @@ body {
 
 body.dark {
     --main-background-color: #1a1a1a;
+    --button-background-color: #e3e3e3;
+    --text-color: white;
+    --button-text-color: black;
     background-color: var(--main-background-color);
 }
 
@@ -76,4 +82,23 @@ header div.right {
     color: var(--header-font-color);
     font-size: 1.5em;
     cursor: pointer;
+}
+
+/* ADMIN PAGE */
+.signInWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+}
+
+.signInButton {
+    border: none;
+    font-family: 'Roboto';
+    font-size: 1.5em;
+    color: var(--button-text-color);
+    padding: 5px;
+    border-radius: 7.5px;
+    cursor: pointer;
+    background-color: var(--button-background-color);
 }

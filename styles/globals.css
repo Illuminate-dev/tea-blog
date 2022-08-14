@@ -12,9 +12,10 @@ html {
 body {
     width: 60vw;
     --main-background-color: #e4e4e4;
-    --button-background-color: #1a1a1a;
+    --button-background-color: #2c2c2c;
     --text-color: black;
     --button-text-color: white;
+    --disabled-button-background-color: #474747;
     
     background-color: var(--main-background-color);
 
@@ -25,6 +26,8 @@ body.dark {
     --button-background-color: #e3e3e3;
     --text-color: white;
     --button-text-color: black;
+    --disabled-button-background-color: #747474;
+
     background-color: var(--main-background-color);
 }
 
@@ -92,7 +95,7 @@ header div.right {
     padding: 80px;
 }
 
-#signInButton, #signOutButton {
+button {
     border: none;
     font-size: 1.5em;
     font-family: 'Roboto';
@@ -108,7 +111,7 @@ header div.right {
     margin: 20px 0;
 }
 
-form#signInForm {
+form {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -124,11 +127,63 @@ form#signInForm {
     gap: 10px;
 }
 
-#signInForm input {
+form input {
     border: none;
     border-bottom: 1px solid var(--text-color);
     padding: 5px;
     font-size: 1.5em;
     color: var(--text-color);
     background-color: var(--main-background-color);
+}
+
+form input:focus {
+    outline: none;
+}
+
+form textarea {
+    resize: vertical;
+    border: none;
+    border-bottom: 1px solid var(--text-color);
+    color: var(--text-color);
+    background-color: var(--main-background-color);
+    padding: 7.5px;
+}
+
+form textarea:focus {
+    outline: none;
+}
+
+#createArticleForm label {
+    font-size: 1.25em;
+}
+
+#createArticleForm button {
+    font-size: 1.25em;
+    margin: 0 auto;
+    padding: 5px 10px;
+    border: none;
+    font-family: 'Roboto';
+    color: var(--button-text-color);
+    max-width: 150px;
+    border-radius: 7.5px;
+    cursor: pointer;
+    background-color: var(--button-background-color);
+}
+
+#createArticleForm button:disabled {
+    background-color: var(--disabled-button-background-color);
+    cursor: not-allowed;
+}
+
+div.flex {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 3em;
+    margin: 20px 0;
 }

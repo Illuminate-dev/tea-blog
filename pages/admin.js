@@ -14,5 +14,5 @@ export default function AdminPage() {
 }
 
 function SignOut() {
-    return (<button onClick={() => signOut(auth)}>Sign Out</button>)
+    return (<button id="signOutButton" onClick={() => signOut(auth)}>Sign Out</button>)
 }

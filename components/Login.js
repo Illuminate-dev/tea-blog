@@ -36,25 +36,23 @@ function SignIn() {
     }
 
     return (
-        <form>
+        <form id="signInForm">
             {error && <p>{error}</p>}
-            <label htmlFor="signUpEmail">Email</label>
-            <input
-                type="email"
-                value={email}
-                onChange={(event) => { setEmail(event.target.value) }}
-                name="email"
-                id="signUpEmail"
-                placeholder="Email" />
-            <label htmlFor="signUpPassword">Password</label>
-            <input
-                type="password"
-                name="passwordOne"
-                value={passwordOne}
-                onChange={(event) => { setPasswordOne(event.target.value) }}
-                id="signUpPassword"
-                placeholder="Password" />
-            <button type="sumbit" onClick={onSubmit}>Sign In</button>
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(event) => { setEmail(event.target.value) }}
+                    name="email"
+                    id="signInEmail"
+                    placeholder="Email" />
+                <input
+                    type="password"
+                    name="passwordOne"
+                    value={passwordOne}
+                    onChange={(event) => { setPasswordOne(event.target.value) }}
+                    id="signInPassword"
+                    placeholder="Password" />
+            <button type="sumbit" onClick={onSubmit} id="signInButton">Sign In</button>
         </form>
     )
 

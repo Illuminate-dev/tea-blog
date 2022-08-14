@@ -92,13 +92,43 @@ header div.right {
     padding: 80px;
 }
 
-.signInButton {
+#signInButton, #signOutButton {
     border: none;
-    font-family: 'Roboto';
     font-size: 1.5em;
+    font-family: 'Roboto';
     color: var(--button-text-color);
     padding: 5px;
+    max-width: 150px;
     border-radius: 7.5px;
     cursor: pointer;
     background-color: var(--button-background-color);
+}
+
+#signOutButton {
+    margin: 20px 0;
+}
+
+form#signInForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+    color: var(--text-color);
+    font-family: 'Roboto';
+}
+
+
+#signInForm div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#signInForm input {
+    border: none;
+    border-bottom: 1px solid var(--text-color);
+    padding: 5px;
+    font-size: 1.5em;
+    color: var(--text-color);
+    background-color: var(--main-background-color);
 }

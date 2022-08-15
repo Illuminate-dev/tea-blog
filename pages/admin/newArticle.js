@@ -1,5 +1,8 @@
-import { doc, serverTimestamp, setDoc } from "@firebase/firestore";
+import { doc, getDoc, serverTimestamp, setDoc } from "@firebase/firestore";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import ReactMarkdown from "react-markdown";
 import { AuthUserContext } from "../../lib/authUserContext";
 import { firestore } from "../../lib/firebaseConfig";
@@ -8,11 +11,15 @@ export default function newArticlePage() {
     const { user } = useContext(AuthUserContext);
 
     return (
+        <>{user ? 
         <CreateArticle />
+        :
+        <Link href="/admin">Back</Link>}</>
     )
 }
 
 function CreateArticle() {
+    const router = useRouter();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [preview , setPreview] = useState(false);
@@ -27,6 +34,10 @@ function CreateArticle() {
 
         console.log(slug)
         const ref = doc(firestore, "articles", slug)
+        if ((await getDoc(ref)).exists()) {
+            toast.error("Article already exists");
+            return;
+        }
 
         const data = {
             title,
@@ -36,7 +47,10 @@ function CreateArticle() {
             content
         }
 
-        await setDoc(ref, data);
+        await setDoc(ref, data).then(() => {
+            toast.success("Article created!")
+            router.push(`/admin/${slug}`)
+        });
     }
     return (
         <form id="createArticleForm" onSubmit={submitHandler}>

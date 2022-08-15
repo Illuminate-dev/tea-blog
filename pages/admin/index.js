@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function AdminPage() {
     const { user } = useContext(AuthUserContext);
 
-    return (<>{user ? 
+    return (<>{ user ?
         <div className="flex"><Link href="/admin/newArticle"><button>Create A New Article</button></Link>
         <SignOut /></div>
         :

@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { ThemeProvider } from '../lib/theme'
 import { AuthUserContext } from '../lib/authUserContext'
 import { useUserData } from '../lib/hooks'
+import { Toaster } from 'react-hot-toast'
 
 function MyApp({ Component, pageProps }) {
   const userData = useUserData();
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider>
         <Header />
         <Component {...pageProps} />
+        <Toaster />
       </ThemeProvider>
     </AuthUserContext.Provider>
   </>

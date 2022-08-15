@@ -28,7 +28,7 @@ export default function Header() {
       <ul className="left">
          <li className="home-link-wrapper">
             <Link href='/' className="home-link">
-               <><FontAwesomeIcon icon={faCoffee} /> <p id="home-link-text">Home</p></>
+               <a><FontAwesomeIcon icon={faCoffee} /> <p id="home-link-text">Home</p></a>
             </Link>
             </li>
          <li>Article List</li>

@@ -4,14 +4,14 @@ import { useContext, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { firestore } from "../../lib/firebaseConfig";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { AuthUserContext } from "../../lib/authUserContext"
+import { AuthUserContext, useAuth } from "../../lib/authUserContext"
 import toast from "react-hot-toast";
 
 export default function AdminArticlePage({}) {
-    const {user }= useContext(AuthUserContext)    
+    const userAuth = useAuth();
 
     return (
-        <>{user ?
+        <>{!userAuth.loading && userAuth.user ?
         <main>
           <ArticleManager/>  
         </main> : null }</>
@@ -63,7 +63,7 @@ function ArticleForm({defaultValues, articleRef}) {
 
         await updateDoc(articleRef, data).then(() => {
             toast.success("Post updated!")
-            router.push(`/`)
+            router.push(`/article/${defaultValues.slug}`)
         });
     }
     return (

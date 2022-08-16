@@ -193,3 +193,16 @@ div.flex {
     font-size: 3em;
     margin: 20px 0;
 }
+
+section {
+    color: var(--text-color);
+}
+
+
+/* ARTICLE PAGE */
+
+.article {
+    width: 35vw;
+    color: var(--text-color);
+    
+}

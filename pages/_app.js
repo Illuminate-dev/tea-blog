@@ -3,7 +3,7 @@ import '../styles/globals.css'
 import Header from '../components/Header'
 import Head from 'next/head'
 import { ThemeProvider } from '../lib/theme'
-import { AuthUserContext } from '../lib/authUserContext'
+import { AuthUserContext, AuthUserProvider } from '../lib/authUserContext'
 import { useUserData } from '../lib/hooks'
 import { Toaster } from 'react-hot-toast'
 
@@ -14,13 +14,13 @@ function MyApp({ Component, pageProps }) {
     <Head>
       <title>Tea Blog</title>
     </Head>
-    <AuthUserContext.Provider value={userData}>
+    <AuthUserProvider>
       <ThemeProvider>
         <Header />
         <Component {...pageProps} />
         <Toaster />
       </ThemeProvider>
-    </AuthUserContext.Provider>
+    </AuthUserProvider>
   </>
 }
 

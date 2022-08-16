@@ -4,14 +4,14 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import ReactMarkdown from "react-markdown";
-import { AuthUserContext } from "../../lib/authUserContext";
+import { AuthUserContext, useAuth } from "../../lib/authUserContext";
 import { firestore } from "../../lib/firebaseConfig";
 
 export default function newArticlePage() {
-    const { user } = useContext(AuthUserContext);
+    const userAuth = useAuth();
 
     return (
-        <>{user ? 
+        <>{!useAuth.loading && userAuth.user ? 
         <CreateArticle />
         :
         <Link href="/admin">Back</Link>}</>

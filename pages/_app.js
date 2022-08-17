@@ -8,7 +8,8 @@ import { useUserData } from '../lib/hooks'
 import { Toaster } from 'react-hot-toast'
 
 function MyApp({ Component, pageProps }) {
-  const userData = useUserData();
+
+  
 
   return <>
     <Head>

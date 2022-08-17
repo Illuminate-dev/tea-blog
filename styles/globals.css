@@ -204,5 +204,20 @@ section {
 .article {
     width: 35vw;
     color: var(--text-color);
-    
+
+}
+
+/* ARTICLE LIST */
+
+.article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+    color: var(--text-color);
+    font-family: 'Roboto';
+}
+
+.article-card {
+    color: var(--text-color);
 }

@@ -2,11 +2,13 @@ import { faCoffee, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useLoaded } from "../lib/hooks";
 import { useThemeContext } from "../lib/theme";
 
 export default function Header() {
 
    const { theme, setTheme } = useThemeContext();
+   const loaded = useLoaded();
 
    const [ icon, setIcon ] = useState(theme === "light" ? faMoon : faSun);
 
@@ -40,7 +42,8 @@ export default function Header() {
          <li>Random Article</li>
       </ul>
       <div className="right themeButtonWrapper">
-         <FontAwesomeIcon icon={icon} className="themeButton" onClick={themeClickedCallback}/>
+         <>{loaded && <FontAwesomeIcon icon={icon} className="themeButton" onClick={themeClickedCallback}/>}</>
+         
       </div>
    </header>)
 }

@@ -259,19 +259,30 @@ input[type="file"] {
 
 .article-list {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-flow: row wrap;
+    gap: 40px 20px;
     padding: 20px 0;
     color: var(--text-color);
     font-family: 'Roboto';
     list-style-type: none;
+    justify-content: space-between;
 }
 
 .article-card {
-    color: var(--text-color);
+    color: var(--button-text-color);
+    display: flex;
+    justify-content: left;
+    background-color: var(--button-background-color);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.article-card h2{
+    font-size: 36px;
 }
 
 .main-image {
     width: 10px;
     height: auto;
 }
+

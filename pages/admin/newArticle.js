@@ -35,6 +35,11 @@ function CreateArticle() {
     const submitHandler = async e => {
         e.preventDefault();
 
+        if (image === "") {
+            toast.error("You must upload an image");
+            return;
+        }
+
         console.log(slug)
         const ref = doc(firestore, "articles", slug)
         if ((await getDoc(ref)).exists()) {

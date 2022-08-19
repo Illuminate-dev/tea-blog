@@ -4,11 +4,13 @@ import { AuthUserContext, useAuth } from "../../lib/authUserContext";
 import { auth, firestore } from "../../lib/firebaseConfig";
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
+import ArticleList from "../../components/ArticleList";
 
 export default function AdminPage() {
     const userAuth = useAuth(); 
 
     return (<>{(!userAuth.loading && userAuth.user) ?
+        
         <div className="flex"><Link href="/admin/newArticle"><button>Create A New Article</button></Link>
         <SignOut /></div>
         :
@@ -16,6 +18,7 @@ export default function AdminPage() {
     }</>)
 
 }
+
 
 function SignOut() {
     return (<button id="signOutButton" onClick={() => signOut(auth)}>Sign Out</button>)

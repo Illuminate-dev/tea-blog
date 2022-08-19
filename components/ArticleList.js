@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function ArticleList({articles}) {
 
-    return (<ul className="articleList">
+    return (<ul className="article-list">
         {articles && articles.map(article => <Article article={article} key={article.slug}/>)}
     </ul>)
 }
@@ -21,7 +21,7 @@ function Article({article}) {
             </h2>
         </Link>
 
-       <p>{article.content.slice(0, 20)}</p> 
+       <p>{article.content.slice(0, 20)}...</p> 
 
     </li>)
 }

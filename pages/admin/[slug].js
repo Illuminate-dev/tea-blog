@@ -6,6 +6,7 @@ import { firestore } from "../../lib/firebaseConfig";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { AuthUserContext, useAuth } from "../../lib/authUserContext"
 import toast from "react-hot-toast";
+import ImageUploader from "../../components/ImageUploader";
 
 export default function AdminArticlePage({}) {
     const userAuth = useAuth();
@@ -76,6 +77,7 @@ function ArticleForm({defaultValues, articleRef}) {
             <>
                 <label htmlFor="articleContent">Content</label>
                 <textarea rows={15} id="articleContent" value={content} onChange={(e) => setContent(e.target.value)}/>
+                <ImageUploader />
                 <button type="submit" >Save Article</button>
             </>}
             <button type="button" disabled={!isReady} onClick={(e) => setPreview(!preview)}>{preview ? "Edit" : "Preview"}</button>

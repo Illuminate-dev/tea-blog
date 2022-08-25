@@ -3,7 +3,7 @@ import { useState } from "react";
 import ArticleList from "../components/ArticleList";
 import { firestore, postToJSON } from "../lib/firebaseConfig";
 
-const LIMIT = 3;
+const LIMIT = 5;
 
 export async function getStaticProps() {
   const articlesQuery = query(collectionGroup(firestore, "articles"), orderBy("createdAt", "desc"), limit(LIMIT));
@@ -22,7 +22,9 @@ export default function Home(props) {
   
   return (
     <main>
-      <ArticleList articles={articles} />
+      <div className="article-list-wrapper">
+        <ArticleList articles={articles} />
+      </div>
 
     </main>
   )

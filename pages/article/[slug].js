@@ -1,4 +1,5 @@
 import { collectionGroup, doc, getDoc, getDocs } from "@firebase/firestore";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react"
 import { useDocumentData } from "react-firebase-hooks/firestore";
@@ -53,6 +54,7 @@ export default function Article(props) {
             <h1 className="title">
                 {props.post.title}
             </h1>
+            <Image src={props.post.imageUrl} width={400} height={200}></Image>
             <ReactMarkdown children={props.post.content} />
         </main> 
     )

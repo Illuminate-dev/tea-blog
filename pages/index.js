@@ -6,7 +6,7 @@ import { firestore, postToJSON } from "../lib/firebaseConfig";
 const LIMIT = 5;
 
 export async function getStaticProps() {
-  const articlesQuery = query(collectionGroup(firestore, "articles"), orderBy("createdAt", "desc"), limit(LIMIT));
+  const articlesQuery = query(collectionGroup(firestore, "articles"), orderBy("updatedAt", "desc"), limit(LIMIT));
 
   const articles = (await getDocs(articlesQuery)).docs.map(postToJSON);
 

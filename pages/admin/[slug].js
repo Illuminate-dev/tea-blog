@@ -64,7 +64,7 @@ function ArticleForm({defaultValues, articleRef}) {
 
         await updateDoc(articleRef, data).then(() => {
             toast.success("Post updated!")
-            router.push(`/article/${defaultValues.slug}`)
+            router.push(`/articles/${defaultValues.slug}`)
         });
     }
     return (

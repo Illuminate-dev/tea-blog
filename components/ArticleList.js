@@ -18,13 +18,13 @@ function Article({admin, article, first}) {
 
 
             <div className="left">
-                    <Link href={`/article/${article.slug}`}>
+                    <Link href={`/articles/${article.slug}`}>
                         <h2>
                             <a>{article.title}</a>
                         </h2>
                     </Link>
                 <div className="image-wrapper">
-                    <Link href={`/article/${article.slug}`}>
+                    <Link href={`/articles/${article.slug}`}>
                         <Image src={article.imageUrl} width={first ? 800 : 400} height={first ? 400 : 200} className="article-image"></Image>
                     </Link>
                 </div>

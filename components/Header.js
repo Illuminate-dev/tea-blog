@@ -1,7 +1,10 @@
+import { collection, collectionGroup, getDocs, query } from "@firebase/firestore";
 import { faCoffee, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { firestore, postToJSON } from "../lib/firebaseConfig";
 import { useLoaded } from "../lib/hooks";
 import { useThemeContext } from "../lib/theme";
 
@@ -9,6 +12,7 @@ export default function Header() {
 
    const { theme, setTheme } = useThemeContext();
    const loaded = useLoaded();
+      const router = useRouter();
 
    const [ icon, setIcon ] = useState(theme === "light" ? faMoon : faSun);
 
@@ -17,6 +21,12 @@ export default function Header() {
       setIcon(theme === "light" ? faSun : faMoon);
    }
 
+   const randomArticle = async () => {
+      const colgroupquery = query(collectionGroup(firestore, 'articles'));
+      const docs = ((await getDocs(colgroupquery)).docs.map(postToJSON))
+      const docpath = docs[Math.floor(Math.random() * docs.length)].slug;
+      router.push(`/articles/${docpath}`)
+   }
 
    useEffect(() => {
       console.log(theme)
@@ -38,8 +48,8 @@ export default function Header() {
                <a><FontAwesomeIcon icon={faCoffee} /> <p id="home-link-text">Home</p></a>
             </Link>
             </li>
-         <li>Article List</li>
-         <li>Random Article</li>
+         <li><Link href="/articles">Article List</Link></li>
+         <li onClick={randomArticle} style={{cursor: "pointer"}}>Random Article </li>
       </ul>
       <div className="right themeButtonWrapper">
          <>{loaded && <FontAwesomeIcon icon={icon} className="themeButton" onClick={themeClickedCallback}/>}</>
